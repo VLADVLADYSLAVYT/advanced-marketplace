@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль - Advanced Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .profile-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 2rem;
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin-right: 2rem;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .profile-field {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .field-label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .field-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .balance-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .balance-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .balance-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .action-buttons button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-add-funds {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-add-funds:hover {
+            background: #5568d3;
+        }
+        
+        .btn-logout {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-logout:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">👤 Профіль</div>
+            <div class="navbar-menu">
+                <a href="index.html" class="nav-link">Товари</a>
+                <a href="analytics.html" class="nav-link">Аналітика</a>
+                <a href="profile.html" class="nav-link active">Профіль</a>
+                <a href="transactions.html" class="nav-link">Транзакції</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="avatar" id="userAvatar">👤</div>
+                    <div class="profile-info">
+                        <div class="profile-name" id="userName">Завантаження...</div>
+                        <div class="profile-role" id="userRole">-</div>
+                    </div>
+                </div>
+
+                <div id="profileDetails">
+                    <div class="profile-field">
+                        <span class="field-label">Email:</span>
+                        <span class="field-value" id="userEmail">-</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="field-label">Статус:</span>
+                        <span class="field-value" id="userStatus">-</span>
+                    </div>
+                </div>
+
+                <div class="balance-card">
+                    <div class="balance-label">Ваш баланс</div>
+                    <div class="balance-value" id="userBalance">0.00 грн</div>
+                </div>
+
+                <div class="profile-field">
+                    <span class="field-label">ID користувача:</span>
+                    <span class="field-value" id="userId">-</span>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-add-funds" onclick="addFunds()">Поповнити рахунок</button>
+                    <button class="btn-logout" onclick="logout()">Вийти</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Advanced Marketplace. Усі права захищені.</p>
+        </footer>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>
