@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Транзакції - Advanced Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .transactions-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .transactions-table th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .transactions-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .transactions-table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .transaction-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .type-buy {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .type-sell {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .pagination {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .pagination button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination button:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .pagination button.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .no-transactions {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filters select, .filters input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">📝 Транзакції</div>
+            <div class="navbar-menu">
+                <a href="index.html" class="nav-link">Товари</a>
+                <a href="analytics.html" class="nav-link">Аналітика</a>
+                <a href="profile.html" class="nav-link">Профіль</a>
+                <a href="transactions.html" class="nav-link active">Транзакції</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <h1 style="color: white; margin-bottom: 2rem;">Історія транзакцій</h1>
+
+            <div class="transactions-container">
+                <div class="filters">
+                    <select id="filterType" onchange="applyFilters()">
+                        <option value="">Усі транзакції</option>
+                        <option value="BUY">Покупки</option>
+                        <option value="SELL">Продажу</option>
+                    </select>
+                    <input type="date" id="filterDate" onchange="applyFilters()">
+                </div>
+
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Товар</th>
+                            <th>Тип</th>
+                            <th>Кількість</th>
+                            <th>Ціна/од.</th>
+                            <th>Сума</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsBody">
+                        <tr>
+                            <td colspan="6" class="no-transactions">Завантаження...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Advanced Marketplace. Усі права захищені.</p>
+        </footer>
+    </div>
+
+    <script src="transactions.js"></script>
+</body>
+</html>
